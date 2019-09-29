@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Company Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeCard()">Close</ion-button>
+    </ion-buttons>
+    <img src="{{ company.logo }}" alt="Alex is a hoeeeeeeeee" />
+    <ion-card-header>
+      <ion-card-title>
+        {{ company.name }}
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ company.description }} <br>
+      Find out more about {{ company.name }} <a href="{{ company.link }} " color="primary" target="blank">here!</a>
+    </ion-card-content>
+
+    <ion-card-subtitle *ngIf="curUser.linelocation > 0;else notInLine">
+      You are number {{ curUser.linelocation }} in line.<br>
+      There are {{ queueSize }} people in line for this company.
+    </ion-card-subtitle>
+    <ng-template #notInLine>
+      <ion-card-subtitle>
+        There are {{ queueSize }} people in line for this company.
+      </ion-card-subtitle>
+      <ion-buttons slot="start">
+        <ion-button (click)="joinQueue()">Join Queue</ion-button>
+      </ion-buttons>
+    </ng-template>
+  </ion-card>
+</ion-content>
