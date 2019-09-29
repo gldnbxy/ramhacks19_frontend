@@ -14,5 +14,6 @@ export interface IUser {
 	major: IMajor,
 	position: IPosition,
 	citizenship: string,
-	linelocation: number;
+	linelocation: number,
+	skills: string[];
 }

@@ -14,6 +14,8 @@ import { Storage } from '@ionic/storage';
 export class RegisterPage implements OnInit {
 
   user: IUser;
+  preskills: string;
+  skills: string[]
 
   majors: IMajor[] = [{
     name: 'Computer Engineering',
@@ -41,15 +43,22 @@ export class RegisterPage implements OnInit {
         fulltime: false
       },
       citizenship: null,
-      linelocation: null
+      linelocation: null,
+      skills: null
     };
   }
 
   ngOnInit() {
   }
 
+  splitSkills() {
+    this.skills = this.preskills.split(',');
+    this.user.skills = this.skills;
+  }
+
   register() {
     console.log('making acct');
+    this.splitSkills();
 
     let ip = 'http://34.69.192.84';
     let url = `${ip}/api/students`;

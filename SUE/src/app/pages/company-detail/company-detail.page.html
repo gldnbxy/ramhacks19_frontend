@@ -18,18 +18,31 @@
     </ion-card-header>
 
     <ion-card-content>
-      {{ company.description }} <br>
-      Find out more about {{ company.name }} <a href="{{ company.link }} " color="primary" target="blank">here!</a>
+      <ion-text color="grey">
+        <h1>Company Description:</h1> <br>
+        {{ company.description }} <br>
+        Find out more about {{ company.name }} <a href="{{ company.link }} " color="primary" target="blank">here!</a>
+        <br><br>
+        <h1>Job Description: </h1> <br>
+        {{ company.job }} <br><br>
+        <h1>Preferred Majors</h1> <br>
+        {{ company.major }} <br><br>
+      </ion-text>
     </ion-card-content>
 
-    <ion-card-subtitle *ngIf="curUser.linelocation > 0;else notInLine">
-      You are number {{ curUser.linelocation }} in line.<br>
-      There are {{ queueSize }} people in line for this company.
-    </ion-card-subtitle>
-    <ng-template #notInLine>
-      <ion-card-subtitle>
+    <div *ngIf="curUser.linelocation > 0;else notInLine">
+      <ion-card-content>
+        You are number {{ curUser.linelocation }} in line.<br>
         There are {{ queueSize }} people in line for this company.
-      </ion-card-subtitle>
+      </ion-card-content>
+      <ion-buttons slot="start">
+        <ion-button (click)="leaveQueue()" color="danger">Leave Queue</ion-button>
+      </ion-buttons>
+    </div>
+    <ng-template #notInLine>
+      <ion-card-content>
+        There are {{ queueSize }} people in line for this company.
+      </ion-card-content>
       <ion-buttons slot="start">
         <ion-button (click)="joinQueue()">Join Queue</ion-button>
       </ion-buttons>
