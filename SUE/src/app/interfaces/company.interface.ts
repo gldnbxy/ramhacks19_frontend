@@ -1,4 +1,6 @@
 export interface ICompany {
-	name: string;
-	weblink: string;
+	name: string,
+	description: string,
+	link: string,
+	logourl: string
 }

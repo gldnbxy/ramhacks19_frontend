@@ -1,54 +1,35 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Map View</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-      <ion-col>
-        ion-col
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="COE">
+    <ion-grid>
+      <ion-row style="text-align: center" *ngFor="let company of companies1" (click)="openCompanyDetail(company)">
+        <img src="{{ company.logo }}">
+        <p>{{ company.name }}</p>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="COE">
+    <ion-grid>
+      <ion-row style="text-align: center" *ngFor="let company of companies2" (click)="openCompanyDetail(company)">
+        <img src="{{ company.logo }}">
+        <p>{{ company.name }}</p>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="COE">
+    <ion-grid>
+      <ion-row style="text-align: center" *ngFor="let company of companies3" (click)="openCompanyDetail(company)">
+        <img src="{{ company.logo }}">
+        <p>{{ company.name }}</p>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

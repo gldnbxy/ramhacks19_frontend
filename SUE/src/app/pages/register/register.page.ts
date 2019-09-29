@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IMajor } from 'src/app/interfaces/major.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -26,7 +28,7 @@ export class RegisterPage implements OnInit {
     abrv: 'ME'
   }];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, public storage: Storage) {
     this.user = {
       firstname: null,
       lastname: null,
@@ -38,7 +40,8 @@ export class RegisterPage implements OnInit {
         coop: false,
         fulltime: false
       },
-      citizenship: null
+      citizenship: null,
+      linelocation: null
     };
   }
 
@@ -48,14 +51,18 @@ export class RegisterPage implements OnInit {
   register() {
     console.log('making acct');
 
-    let ip = 'http://34.69.192.84'
+    let ip = 'http://34.69.192.84';
     let url = `${ip}/api/students`;
     let headers = new HttpHeaders().set('Content-Type', 'application/JSON');
 
-    this.http.post<Boolean>(url, this.user, { headers }).subscribe(res => {
+    this.storage.set('current_user', this.user);
+    this.http.post<boolean>(url, this.user, { headers }).subscribe(res => {
       console.log(`#########################################`);
       console.log(`Server Returned: `);
       console.log(res);
+      this.router.navigateByUrl('/map');
+    }, err => {
+      console.log(err);
     });
 
   }

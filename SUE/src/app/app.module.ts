@@ -11,11 +11,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { CompanyDetailPage } from 'src/app/pages/company-detail/company-detail.page';
+import { CompanyDetailPageModule } from 'src/app/pages/company-detail/company-detail.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule],
+  entryComponents: [CompanyDetailPage],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    CompanyDetailPageModule,
+    AppRoutingModule
+  ],
   providers: [
     HttpClient,
     StatusBar,

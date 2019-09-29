@@ -13,5 +13,6 @@ export interface IUser {
 	phonenum: number,
 	major: IMajor,
 	position: IPosition,
-	citizenship: string
+	citizenship: string,
+	linelocation: number;
 }
