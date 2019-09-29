@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="register()">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" [(ngModel)]="user.firstname" name="user.firstname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" [(ngModel)]="user.lastname" name="user.lastname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" [(ngModel)]="user.email" name="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Phone Number <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" [(ngModel)]="user.phonenum" name="user.phonenum"></ion-input>
+      </ion-item>
+
+      <!-- Pls make dropdown thnx @TODO also add ability to add more majors-->
+      <ion-item>
+        <ion-label>Major <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select interface="popover" [(ngModel)]="user.major" name="user.major">
+          <ion-select-option *ngFor="let major of majors" value="{{ major.abrv }}">
+            {{ major.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- mkae this radio button-->
+      <ion-item>
+        <ion-label position="stacked">Position Type <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-item lines="none">
+          <ion-label>Internship</ion-label>
+          <ion-checkbox color="secondary" slot="start" [(ngModel)]="user.position.internship"
+            name="user.position.internship"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Co-Op</ion-label>
+          <ion-checkbox color="secondary" slot="start" [(ngModel)]="user.position.coop" name="user.position.coop">
+          </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Full Time</ion-label>
+          <ion-checkbox color="secondary" slot="start" [(ngModel)]="user.position.fulltime"
+            name="user.position.fulltime"></ion-checkbox>
+        </ion-item>
+      </ion-item>
+
+
+      <!-- Pls make dropdown thnx @TODO also add ability to add more majors-->
+      <ion-item>
+        <ion-label position=" stacked">Citizenship Status <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select interface="popover" [(ngModel)]="user.citizenship" name="user.citizenship">
+          <ion-select-option value="us_citizen">US Citizen</ion-select-option>
+          <ion-select-option value="perm_resident">Permanent Resident</ion-select-option>
+          <ion-select-option value="student_visa">Student Visa</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+    </div>
+  </form>
+</ion-content>
